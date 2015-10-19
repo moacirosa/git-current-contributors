@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+import os
+import args_collector
+import analyser
+
+analyser = analyser.RepositoryAnalyser(os.getcwd(),
+                                       args_collector.args.verbose)
+
+analyser.commit(identifier=args_collector.args.identifier,
+                path=args_collector.args.path)
