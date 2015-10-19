@@ -1,6 +1,6 @@
 # Git Current Contributors
 
-It's a custom _Git subcommand_ that attempts to answer a question: **"How much code I've wrote is STILL there?"** Maybe it's just a dummy metric but it's fun :)
+It's a custom _Git subcommand_ that attempts to answer a question: **"How much code I have written and is STILL there?"** Maybe it's just a dummy metric but it's fun :)
 
 ## Install
 
@@ -9,7 +9,7 @@ _Put in your system (Linux, MacOS) PATH and use like custom git commands_
 
 ## Usage
 
-Just grabbing some repository and running the command:
+Just grab some repository and running the command:
 
 ```shell
 
@@ -36,7 +36,7 @@ $ git current-contributors -v --path="tests"
 # 27.58% Jordi Boggiano (2256)
 ```
 
-In example above verbosity was increased showing absolute number of lines currently "owned"
+In example above verbosity was increased by showing absolute number of lines are currently "owned"
 
 ```shell
 $ git current-contributors -h
