@@ -18,14 +18,33 @@ class RepositoryAnalyser:
 
         return files.split()
 
-    def blame(self, file):
+    def blame(self, file, skip_binary = True):
 
         os.chdir(self.repository_path)
 
-        parameters = ['git', 'blame', '--line-porcelain', file]
+        if self.is_binary(file) and skip_binary:
+
+            if self.verbosity > 2:
+                print('Skipping (binary) {} ...'.format(file))
+
+            return ''
+
+        if self.verbosity > 2:
+            print('Running over {} ...'.format(file))
+
+        parameters = ['git', 'blame', '--line-porcelain', '-w', file]
         blame = subprocess.check_output(parameters, universal_newlines=True)
 
         return blame
+
+    def is_binary(self, file):
+
+        parameters = ['file', '--mime', file]
+
+        mime = subprocess.check_output(parameters, universal_newlines=True)
+        match = re.search('charset=binary', mime)
+
+        return match is not None
 
     def commit(self, path = '', identifier = 'author'):
 
