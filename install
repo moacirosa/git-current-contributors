@@ -1,0 +1,13 @@
+#!/bin/bash
+
+REPOSITORY_URI="https://github.com/moacirosa/git-current-contributors.git"
+
+git clone ${REPOSITORY_URI} ~/.git-current-contributors
+source ~/.git-current-contributors/sourcefile
+
+echo "# Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.bashrc
+echo "export ~/.git-current-contributors" >> ~/.bashrc
+
+echo "Custom git command 'git-current-contributors' was successfully installed"
+echo "Check new command availability by running 'git help -a'"
+echo "More info visit ${REPOSITORY_URI}"
