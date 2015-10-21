@@ -3,10 +3,21 @@
 REPOSITORY_URI="https://github.com/moacirosa/git-current-contributors.git"
 
 git clone ${REPOSITORY_URI} ~/.git-current-contributors
-source ~/.git-current-contributors/sourcefile
 
-echo "# Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.bashrc
-echo "export ~/.git-current-contributors" >> ~/.bashrc
+echo "### Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.bashrc
+echo "export PATH=${PATH}:~/.git-current-contributors" >> ~/.bashrc
+
+source ~/.bashrc
+
+# Include PATHs for oh-my-zsh as well when it's present
+
+ZSH_FILE=~/.zshrc
+
+if [ -e "$ZSH_FILE" ]
+then
+  echo "### Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.zshrc
+  echo "export PATH=${PATH}:~/.git-current-contributors" >> ~/.zshrc
+fi
 
 echo "Custom git command 'git-current-contributors' was successfully installed"
 echo "Check new command availability by running 'git help -a'"

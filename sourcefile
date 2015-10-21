@@ -1,4 +1,0 @@
-# Great tip from
-# http://unix.stackexchange.com/questions/23426/how-to-alter-path-within-bash-script
-
-export PATH=$PATH:~/.git-current-contributors
