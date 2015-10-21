@@ -4,12 +4,35 @@ It's a custom _Git subcommand_ that attempts to answer a question: **"How much c
 
 ## Install
 
-_(to be done)_
-_Put in your system (Linux, MacOS) PATH and use like custom git commands_
+Install consists in adding [git-current-contributors](https://github.com/moacirosa/git-current-contributors/blob/master/git-current-contributors) file to your $PATH. There are a lot of ways of doing that. If you trust me here it follow a suggestion:
+
+```shell
+  $ curl -sS https://raw.githubusercontent.com/moacirosa/git-current-contributors/master/install | bash
+```
+
+> **Note:** Run a new shell session or run `source ~/.bashrc` if you can't
+
+You can check if everything is fine running `git help -a`:
+
+```
+...
+git commands available from elsewhere on your $PATH
+
+  current-contributors
+
+'git help -a' and 'git help -g' lists available subcommands and some
+...
+```
+
+### Requirements
+
+- Unix, MacOS
+- Python2+
+- Git
 
 ## Usage
 
-Just grab some repository and running the command:
+Just grab some repository and run the custom command:
 
 ```shell
 
