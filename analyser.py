@@ -60,9 +60,9 @@ class RepositoryAnalyser:
 
     def process_blame(self, blame, identifier = 'author'):
 
-        pattern = '(?:{} )(.+)'.format(identifier)
+        pattern = '^(?:{} )(.+)'.format(identifier)
 
-        regex = re.compile(pattern)
+        regex = re.compile(pattern, re.MULTILINE)
         matches = regex.findall(blame)
 
         return Counter(matches)
