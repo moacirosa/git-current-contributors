@@ -14,7 +14,7 @@ parser.add_argument(
 #     '--reverse',
 #     action='store_true',
 #     help='Sort in reversed order (can be combined with --alphabetically)')
-# 
+#
 # parser.add_argument(
 #     '-a',
 #     '--alphabetically',
@@ -28,6 +28,12 @@ parser.add_argument(
     default='author',
     help='Define the key used in parse process for fetching contributors'
 )
+
+# parser.add_argument(
+#     '--self-update',
+#     default=0,
+#     action='store_true',
+#     help='Update the command itself when updates are available')
 
 parser.add_argument(
     '-v',

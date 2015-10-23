@@ -1,11 +1,15 @@
 #!/usr/bin/python
 
 import os
-import args_collector
-import analyser
+from repository import argv
+from repository import analyser
 
-analyser = analyser.RepositoryAnalyser(os.getcwd(),
-                                       args_collector.args.verbose)
+if argv.args.self_update:
 
-analyser.commit(identifier=args_collector.args.identifier,
-                path=args_collector.args.path)
+    # Implement feature to self-update
+    a = 1
+
+else:
+
+    analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
+                    argv.args.verbose)
