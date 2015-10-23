@@ -4,12 +4,12 @@ import os
 from repository import argv
 from repository import analyser
 
-if argv.args.self_update:
+# if argv.args.self_update:
+#     # Implement feature to self-update
+#     a = 1
+# else:
+#     analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
+#                     argv.args.verbose)
 
-    # Implement feature to self-update
-    a = 1
-
-else:
-
-    analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
-                    argv.args.verbose)
+analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
+                argv.args.verbose)
