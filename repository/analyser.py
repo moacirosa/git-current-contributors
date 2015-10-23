@@ -2,6 +2,7 @@ import os
 import re
 import subprocess
 import presenter
+import logger
 from collections import Counter
 
 def get_files(repository_path, subpath = ''):
@@ -13,19 +14,15 @@ def get_files(repository_path, subpath = ''):
 
     return files.split()
 
-def blame(repository_path, file, skip_binary = True, verbosity = 0):
+def blame(repository_path, file, skip_binary = True):
 
     os.chdir(repository_path)
 
     if is_binary(file) and skip_binary:
-
-        if verbosity > 2:
-            print('Skipping (binary) {} ...'.format(file))
-
+        logger.instance.info('Skipping (binary) {} ...'.format(file))
         return ''
 
-    if verbosity > 2:
-        print('Running over {} ...'.format(file))
+    logger.instance.info('Running over {} ...'.format(file))
 
     parameters = ['git', 'blame', '--line-porcelain', '-w', file]
     blame = subprocess.check_output(parameters, universal_newlines=True)
@@ -46,7 +43,7 @@ def commit(repository_path, subpath = '', identifier = 'author', verbosity = 0):
     accumulator = Counter()
 
     for file in get_files(repository_path, subpath):
-        porcelain_blame = blame(repository_path,  file, True, verbosity)
+        porcelain_blame = blame(repository_path,  file, True)
         counter = process_blame(porcelain_blame, identifier)
         accumulator = accumulator + counter
 
