@@ -33,8 +33,13 @@ def is_binary(file):
 
     parameters = ['file', '--mime', file]
 
-    mime = subprocess.check_output(parameters, universal_newlines=True)
-    match = re.search('charset=binary', mime)
+    try:
+        mime = subprocess.check_output(parameters, universal_newlines=True)
+        match = re.search('charset=binary', mime)
+    except UnicodeDecodeError as e:
+        logger.instance.warning(file)
+        logger.instance.warning(e)
+        match = True
 
     return match is not None
 
