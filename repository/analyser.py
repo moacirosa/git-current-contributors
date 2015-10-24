@@ -55,5 +55,8 @@ def process_blame(blame, identifier = 'author'):
 
     regex = re.compile(pattern, re.MULTILINE)
     matches = regex.findall(blame)
+    counter = Counter(matches)
 
-    return Counter(matches)
+    logger.instance.info(counter)
+
+    return counter
