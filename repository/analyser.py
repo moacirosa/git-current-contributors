@@ -53,7 +53,8 @@ def commit(repository_path, argv):
         counter = process_blame(porcelain_blame, argv)
         accumulator = accumulator + counter
 
-    return presenter.out(accumulator, verbosity)
+    logger.instance.info('Final accumulator...')
+    logger.instance.info(accumulator)
 
     return presenter.out(accumulator, argv)
 
