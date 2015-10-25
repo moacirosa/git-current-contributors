@@ -64,21 +64,25 @@ In example above verbosity was increased by showing absolute number of lines are
 ```shell
 $ git current-contributors -h
 
-# usage: git-current-contributors [-h] [--path PATH]
-#                                 [-i # {author,author-mail,committer,commiter-mail}]
-#                                 [-v] [--version]
+#
+# usage: git-current-contributors [-h] [--path PATH] [-r] [-a]
+#                                [-i {author,author-mail,committer,commiter-mail}]
+#                                [-v] [--version]
 #
 # A custom Git command
 #
 # optional arguments:
-#   -h, --help            show this help message and exit
-#   --path PATH           A path to be inspected that uses current directory as
-#                         default
-#   -i {author,author-mail,committer,commiter-mail}, --identifier {author,author-mail,committer,commiter-mail}
-#                         Define the key used in parse process for fetching
-#                         contributors
-#   -v, --verbose         Increase verbosity
-#   --version             show program's version number and exit
+#  -h, --help            show this help message and exit
+#  --path PATH           A path to be inspected that uses current directory as
+#                        default
+#  -r, --reverse         Sort in reversed order (can be combined with
+#                        --alphabetically)
+#  -a, --alphabetically  Sort alphabetically instead sorting by amount
+#  -i {author,author-mail,committer,commiter-mail}, --identifier {author,author-mail,committer,commiter-mail}
+#                        Define the key used in parse process for fetching
+#                        contributors
+#  -v, --verbose         Increase verbosity
+#  --version             show program's version number and exit
 ```
 
 ...and complete usage information

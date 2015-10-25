@@ -50,6 +50,6 @@ parser.add_argument(
 parser.add_argument(
     '--version',
     action='version',
-    version='%(prog)s 0.1.0')
+    version='%(prog)s 0.4.0')
 
 args = parser.parse_args()
