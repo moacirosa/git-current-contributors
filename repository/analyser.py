@@ -5,17 +5,18 @@ import presenter
 import logger
 from collections import Counter
 
-def get_files(repository_path, subpath = ''):
+def get_files(repository_path, argv):
 
     os.chdir(repository_path)
 
-    parameters = ['git', 'ls-files', subpath]
+    parameters = ['git', 'ls-files', argv.path]
     files = subprocess.check_output(parameters, universal_newlines=True)
 
     return files.split()
 
-def blame(repository_path, file, skip_binary = True):
+def blame(repository_path, file, argv):
 
+    skip_binary = True  # placeholder for new command setting
     os.chdir(repository_path)
 
     if is_binary(file) and skip_binary:
@@ -43,20 +44,22 @@ def is_binary(file):
 
     return match is not None
 
-def commit(repository_path, subpath = '', identifier = 'author', verbosity = 0):
+def commit(repository_path, argv):
 
     accumulator = Counter()
 
-    for file in get_files(repository_path, subpath):
+    for file in get_files(repository_path, argv):
         porcelain_blame = blame(repository_path,  file, True)
-        counter = process_blame(porcelain_blame, identifier)
+        counter = process_blame(porcelain_blame, argv)
         accumulator = accumulator + counter
 
     return presenter.out(accumulator, verbosity)
 
-def process_blame(blame, identifier = 'author'):
+    return presenter.out(accumulator, argv)
 
-    pattern = '^(?:{} )(.+)'.format(identifier)
+def process_blame(blame, argv):
+
+    pattern = '^(?:{} )(.+)'.format(argv.identifier)
 
     regex = re.compile(pattern, re.MULTILINE)
     matches = regex.findall(blame)

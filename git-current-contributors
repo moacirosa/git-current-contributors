@@ -11,5 +11,4 @@ from repository import analyser
 #     analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
 #                     argv.args.verbose)
 
-analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
-                argv.args.verbose)
+analyser.commit(os.getcwd(), argv.args)

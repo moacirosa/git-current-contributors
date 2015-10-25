@@ -1,4 +1,4 @@
-def out(counter, verbosity = 0):
+def out(counter, argv):
 
     sum_lines = sum(counter.values())
 
@@ -11,10 +11,10 @@ def out(counter, verbosity = 0):
     template = '{0:>7.2%} {3}{2}{4}'
     top_n_contributors = 25
 
-    if verbosity > 0:
+    if argv.verbose > 0:
         template = '{0:>7.2%} {3}{2}{4} ({1})'
 
-    if verbosity > 1:
+    if argv.verbose > 1:
         top_n_contributors = None
 
     sorted_counter = reversed(counter.most_common(top_n_contributors))
