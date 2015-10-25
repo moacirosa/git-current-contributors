@@ -17,7 +17,13 @@ def out(counter, argv):
     if argv.verbose > 1:
         top_n_contributors = None
 
-    sorted_counter = reversed(counter.most_common(top_n_contributors))
+    sorted_counter = counter.most_common(top_n_contributors)
+
+    if argv.alphabetically:
+        sorted_counter = sorted(sorted_counter)
+
+    if argv.reverse:
+        sorted_counter = reversed(sorted_counter)
 
     for author, contributions in sorted_counter:
 

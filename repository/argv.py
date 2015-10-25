@@ -8,18 +8,17 @@ parser.add_argument(
     default='',
     help='A path to be inspected that uses current directory as default')
 
-# Still not implemented within analyser
-# parser.add_argument(
-#     '-r',
-#     '--reverse',
-#     action='store_true',
-#     help='Sort in reversed order (can be combined with --alphabetically)')
-#
-# parser.add_argument(
-#     '-a',
-#     '--alphabetically',
-#     action='store_true',
-#     help='Sort alphabetically instead sorting by amount')
+parser.add_argument(
+    '-r',
+    '--reverse',
+    action='store_true',
+    help='Sort in reversed order (can be combined with --alphabetically)')
+
+parser.add_argument(
+    '-a',
+    '--alphabetically',
+    action='store_true',
+    help='Sort alphabetically instead sorting by amount')
 
 parser.add_argument(
     '-i',
