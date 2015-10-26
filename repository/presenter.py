@@ -1,4 +1,7 @@
-def out(counter, argv):
+import logger
+import datetime
+
+def out(counter, argv, elapsed_time = None):
 
     sum_lines = sum(counter.values())
 
@@ -31,3 +34,9 @@ def out(counter, argv):
                                  endcolor, italic, eitalic)
 
         print(output)
+
+    n_contributors = 'Showing {}/{} contributors'.format(top_n, len(counter))
+    elapsed ='Elapsed time: {}'.format(datetime.timedelta(seconds=elapsed_time))
+
+    logger.instance.info(n_contributors)
+    logger.instance.info(elapsed)
