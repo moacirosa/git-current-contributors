@@ -3,6 +3,7 @@ import re
 import subprocess
 import presenter
 import logger
+import time
 from collections import Counter
 
 def get_files(repository_path, argv):
@@ -45,6 +46,7 @@ def is_binary(file):
 
 def commit(repository_path, argv):
 
+    start_time = time.time()
     accumulator = Counter()
 
     for file in get_files(repository_path, argv):
@@ -52,10 +54,9 @@ def commit(repository_path, argv):
         counter = process_blame(porcelain_blame, argv)
         accumulator = accumulator + counter
 
-    logger.instance.info('Final accumulator...')
-    logger.instance.info(accumulator)
+    elapsed_time = time.time() - start_time
 
-    return presenter.out(accumulator, argv)
+    return presenter.out(accumulator, argv, elapsed_time)
 
 def process_blame(blame, argv):
 
