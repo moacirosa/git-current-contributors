@@ -23,7 +23,7 @@ def blame(repository_path, file, argv):
         logger.instance.info('Skipping (binary) {} ...'.format(file))
         return ''
 
-    logger.instance.info('Running over {} ...'.format(file))
+    logger.instance.debug('Running over {} ...'.format(file))
 
     parameters = ['git', 'blame', '--line-porcelain', '-w', file]
     blame = subprocess.check_output(parameters, universal_newlines=True)
@@ -56,6 +56,10 @@ def commit(repository_path, argv):
 
     elapsed_time = time.time() - start_time
 
+    logger.instance.debug('Elapsed time {}'.format(elapsed_time))
+    logger.instance.debug('Final accumulator...')
+    logger.instance.debug(accumulator)
+
     return presenter.out(accumulator, argv, elapsed_time)
 
 def process_blame(blame, argv):
@@ -66,6 +70,6 @@ def process_blame(blame, argv):
     matches = regex.findall(blame)
     counter = Counter(matches)
 
-    logger.instance.info(counter)
+    logger.instance.debug(counter)
 
     return counter
