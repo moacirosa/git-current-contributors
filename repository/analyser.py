@@ -16,10 +16,9 @@ def get_files(repository_path, argv):
 
 def blame(repository_path, file, argv):
 
-    skip_binary = True  # placeholder for new command setting
     os.chdir(repository_path)
 
-    if is_binary(file) and skip_binary:
+    if is_binary(file) and not argv.force_binaries:
         logger.instance.info('Skipping (binary) {} ...'.format(file))
         return ''
 
@@ -49,7 +48,7 @@ def commit(repository_path, argv):
     accumulator = Counter()
 
     for file in get_files(repository_path, argv):
-        porcelain_blame = blame(repository_path,  file, True)
+        porcelain_blame = blame(repository_path,  file, argv)
         counter = process_blame(porcelain_blame, argv)
         accumulator = accumulator + counter
 

@@ -28,6 +28,14 @@ parser.add_argument(
     help='Define the key used in parse process for fetching contributors'
 )
 
+parser.add_argument(
+    '-b',
+    '--force-binaries',
+    action='store_true',
+    default=False,
+    help='Run blame over binaries files (not recommended)'
+)
+
 # parser.add_argument(
 #     '--no-cache',
 #     default=0,
