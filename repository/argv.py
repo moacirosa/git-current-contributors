@@ -15,7 +15,7 @@ parser.add_argument(
     help='Sort in reversed order (can be combined with --alphabetically)')
 
 parser.add_argument(
-    '-a',
+    '-s',
     '--alphabetically',
     action='store_true',
     help='Sort alphabetically instead sorting by amount')
