@@ -9,15 +9,13 @@ def out(counter, argv):
     eitalic = '\x1B[23m'
 
     template = '{0:>7.2%} {3}{2}{4}'
-    top_n_contributors = 25
 
     if argv.show_absolute > 0:
         template = '{0:>7.2%} {3}{2}{4} ({1})'
 
-    if argv.verbose > 1:
-        top_n_contributors = None
+    top_n = argv.top_n if argv.top_n > 0 else None
 
-    sorted_counter = counter.most_common(top_n_contributors)
+    sorted_counter = counter.most_common(top_n)
 
     if argv.alphabetically:
         sorted_counter = sorted(sorted_counter)

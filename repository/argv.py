@@ -37,6 +37,14 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '-t',
+    '--top-n',
+    type=int,
+    default='25',
+    help='Set max number of contributors for listing. Set -1 to unlimit output'
+)
+
+parser.add_argument(
     '-b',
     '--force-binaries',
     action='store_true',
