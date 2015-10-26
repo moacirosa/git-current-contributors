@@ -11,7 +11,7 @@ def out(counter, argv):
     template = '{0:>7.2%} {3}{2}{4}'
     top_n_contributors = 25
 
-    if argv.verbose > 0:
+    if argv.show_absolute > 0:
         template = '{0:>7.2%} {3}{2}{4} ({1})'
 
     if argv.verbose > 1:

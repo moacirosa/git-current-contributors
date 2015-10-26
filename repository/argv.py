@@ -29,6 +29,14 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '-a',
+    '--show-absolute',
+    action='store_true',
+    default=False,
+    help='Print the absolute number of lines owned'
+)
+
+parser.add_argument(
     '-b',
     '--force-binaries',
     action='store_true',
