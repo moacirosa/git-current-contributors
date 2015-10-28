@@ -16,7 +16,7 @@ stream_handler.setFormatter(formatter)
 
 file_handler_output = '{}/.git/logs/current-contributors'.format(os.getcwd())
 file_handler = logging.FileHandler(file_handler_output, 'w', delay=False)
-file_handler.setLevel(20)
+file_handler.setLevel(10)
 file_handler.setFormatter(formatter)
 
 instance.addHandler(stream_handler)
