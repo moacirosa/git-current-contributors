@@ -58,11 +58,12 @@ parser.add_argument(
 #     action='store_true',
 #     help='Avoid using cached info and force parsing repository')
 #
-# parser.add_argument(
-#     '--self-update',
-#     default=0,
-#     action='store_true',
-#     help='Update the command itself when updates are available')
+
+parser.add_argument(
+     '--self-update',
+     default=0,
+     action='store_true',
+     help='Update the command itself when updates are available')
 
 parser.add_argument(
     '-v',

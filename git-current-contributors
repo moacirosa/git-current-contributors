@@ -1,14 +1,10 @@
 #!/usr/bin/python
 
 import os
-from repository import argv
-from repository import analyser
+import repository
 
-# if argv.args.self_update:
-#     # Implement feature to self-update
-#     a = 1
-# else:
-#     analyser.commit(os.getcwd(), argv.args.path, argv.args.identifier,
-#                     argv.args.verbose)
-
-analyser.commit(os.getcwd(), argv.args)
+if repository.argv.args.self_update:
+    install_path = os.path.expanduser('~/.git-current-contributors')
+    repository.selfupdate.update(install_path)
+else:
+    repository.analyser.commit(os.getcwd(), argv.args)
