@@ -16,7 +16,10 @@ def out(counter, argv, elapsed_time = None):
     if argv.show_absolute > 0:
         template = '{0:>7.2%} {3}{2}{4} ({1})'
 
-    top_n = argv.top_n if argv.top_n > 0 else None
+    top_n = argv.top_n
+
+    if top_n < 0 or top_n > len(counter):
+        top_n = len(counter)
 
     sorted_counter = counter.most_common(top_n)
 
