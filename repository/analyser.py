@@ -25,8 +25,12 @@ def blame(repository_path, file, argv):
 
     logger.instance.debug('Running over {} ...'.format(file))
 
-    parameters = ['git', 'blame', '--line-porcelain', '-w', file]
-    blame = subprocess.check_output(parameters, universal_newlines=True)
+    try:
+        parameters = ['git', 'blame', '--line-porcelain', '-w', file]
+        blame = subprocess.check_output(parameters, universal_newlines=True)
+    except subprocess.CalledProcessError as e:
+        logger.instance.error(e)
+        return ''
 
     return blame
 
