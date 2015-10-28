@@ -7,4 +7,4 @@ if repository.argv.args.self_update:
     install_path = os.path.expanduser('~/.git-current-contributors')
     repository.selfupdate.update(install_path)
 else:
-    repository.analyser.commit(os.getcwd(), argv.args)
+    repository.analyser.commit(os.getcwd(), repository.argv.args)
