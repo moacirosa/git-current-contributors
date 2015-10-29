@@ -45,6 +45,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '--csv',
+    action='store_true',
+    default=False,
+    help='Print the output in CSV format'
+)
+
+parser.add_argument(
     '-b',
     '--force-binaries',
     action='store_true',

@@ -64,6 +64,9 @@ def commit(repository_path, argv):
     logger.instance.debug('Final accumulator...')
     logger.instance.debug(accumulator)
 
+    if argv.csv:
+        return presenter.csv(accumulator, argv)
+
     return presenter.out(accumulator, argv, elapsed_time)
 
 def process_blame(blame, argv):
