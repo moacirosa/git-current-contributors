@@ -3,7 +3,7 @@ import datetime
 
 def out(counter, argv, elapsed_time = None):
 
-    prepared_lines = prepare(counter, argv, elapsed_time, False)
+    prepared_lines = prepare(counter, argv, elapsed_time)
     output = '\n'.join(prepared_lines)
 
     print(output)
