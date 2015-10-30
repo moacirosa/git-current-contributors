@@ -85,11 +85,11 @@ $ git clone https://github.com/Seldaek/monolog.git
 $ cd monolog
 $ git current-contributors
 
-# 29.95% Jordi Boggiano
-#  9.36% Christophe Coevoet
-#  2.85% skymeyer
-#  2.69% barbushin
-#  2.32% Florian Plattner
+# 29.95% Jordi Boggian
+#  9.36% Christophe Coevoet
+#  2.85% skymeyer
+#  2.69% barbushin
+#  2.32% Florian Plattner
 #  (...)
 
 ```
@@ -99,11 +99,11 @@ $ git current-contributors
 ```shell
 $ git current-contributors --path="tests"
 
-# 26.85% Jordi Boggiano
-#  9.37% Christophe Coevoet
-#  3.85% skymeyer
-#  3.43% Florian Plattner
-#  3.23% barbushin
+# 26.85% Jordi Boggiano
+#  9.37% Christophe Coevoet
+#  3.85% skymeyer
+#  3.43% Florian Plattner
+#  3.23% barbushin
 
 ```
 
@@ -125,16 +125,16 @@ $ git current-contributors --top-n="3" --reverse --show-absolute
 ``` shell
 $ git current-contributors --top-n="10" --alphabetically
 
-#  0.10% Graeme Yeates
-#  9.48% jdalton
-# 89.49% John-David Dalton
-#  0.05% Justin Ridgewell
-#  0.10% Mathias Bynens
-#  0.08% Michał Lipiński
-#  0.05% Milos Zivadinovic
-#  0.05% octref
-#  0.06% Ray Hammond
-#  0.15% Xotic750
+#  0.10% Graeme Yeates
+#  9.48% jdalton
+# 89.49% John-David Dalton
+#  0.05% Justin Ridgewell
+#  0.10% Mathias Bynens
+#  0.08% Michał Lipiński
+#  0.05% Milos Zivadinovic
+#  0.05% octref
+#  0.06% Ray Hammond
+#  0.15% Xotic750
 ```
 
 ... or showing _mail address_ of top five contributors:
@@ -142,11 +142,11 @@ $ git current-contributors --top-n="10" --alphabetically
 ``` shell
 $ git current-contributors --top-n="5" --identifier="author-mail"
 
-# 98.96% <john.david.dalton@gmail.com>
-#  0.15% <xotic750@gmail>
-#  0.10% <yeatesgraeme@gmail.com>
-#  0.10% <mathias@qiwi.be>
-#  0.08% <michal.lipinski@cgmpolska.pl>
+# 98.96% <john.david.dalton@gmail.com>
+#  0.15% <xotic750@gmail>
+#  0.10% <yeatesgraeme@gmail.com>
+#  0.10% <mathias@qiwi.be>
+#  0.08% <michal.lipinski@cgmpolska.pl>
 ```
 
 ## Options Reference
