@@ -6,6 +6,7 @@ git clone ${REPOSITORY_URI} ~/.git-current-contributors
 
 echo "### Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.bashrc
 echo "export PATH=${PATH}:~/.git-current-contributors" >> ~/.bashrc
+echo "export MANPATH=${PATH}:~/.git-current-contributors/man" >> ~/.bashrc
 
 source ~/.bashrc
 
@@ -17,6 +18,7 @@ if [ -e "$ZSH_FILE" ]
 then
   echo "### Adding custom git command 'git-current-contributors' @moacirosa" >> ~/.zshrc
   echo "export PATH=${PATH}:~/.git-current-contributors" >> ~/.zshrc
+  echo "export MANPATH=${PATH}:~/.git-current-contributors/man" >> ~/.zshrc
 fi
 
 echo "Custom git command 'git-current-contributors' was successfully installed"

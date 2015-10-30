@@ -1,0 +1,61 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "GIT\-CURRENT\-CONTRIBUTORS" "1" "October 2015" "" ""
+.
+.SH "NAME"
+\fBgit\-current\-contributors\fR \- List authors that own code in current branch
+.
+.SH "SYNOPSIS"
+\fBgit\-current\-contributors\fR [\-h] [\-\-path PATH] [\-r] [\-s] [\-i {author,author\-mail,committer,commiter\-mail}] [\-a] [\-t TOP_N] [\-b] [\-\-self\-update] [\-v] [\-\-version]
+.
+.SH "DESCRIPTION"
+List authors that own code in current branch
+.
+.P
+Blame files recursively and calculate how much code belongs to each found author in current repository stage\. This metric will be calculated over git\-ls\-files(1) command which ignore \.gitignore matches
+.
+.SH "OPTIONS"
+\-h, \-\-help show this help message and exit
+.
+.P
+\-\-path PATH A path to be inspected that uses current directory as default
+.
+.P
+\-r, \-\-reverse Sort in reversed order (can be combined with \-\-alphabetically)
+.
+.P
+\-s, \-\-alphabetically Sort alphabetically instead sorting by amount
+.
+.P
+\-i {author,author\-mail,committer,commiter\-mail}, \-\-identifier {author,author\-mail,committer,commiter\-mail} Define the key used in parse process for fetching contributors
+.
+.P
+\-a, \-\-show\-absolute Print the absolute number of lines owned
+.
+.P
+\-t TOP_N, \-\-top\-n TOP_N Set max number of contributors for listing\. Set \-1 to unlimit output
+.
+.P
+\-b, \-\-force\-binaries Run blame over binaries files (not recommended)
+.
+.P
+\-\-self\-update Update the command itself when updates are available
+.
+.P
+\-v, \-\-verbose Increase verbosity
+.
+.P
+\-\-version Show program\'s version number and exit
+.
+.SH "EXAMPLES"
+$ git current\-contributors \-\-top\-n="10" \-\-reverse
+.
+.SH "AUTHOR"
+Written by Moacir Rosa \fIpaulomoacir\.junior@gmail\.com\fR
+.
+.SH "REPORTING BUGS"
+<\fIhttps://github\.com/moacirosa/git\-current\-contributors/issues\fR>
+.
+.SH "SEE ALSO"
+<\fIhttps://github\.com/moacirosa/git\-current\-contributors\fR>
