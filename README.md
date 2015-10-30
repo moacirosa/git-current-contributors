@@ -87,9 +87,9 @@ $ git current-contributors
 
 # 29.95% Jordi Boggian
 #  9.36% Christophe Coevoet
-#  2.85% skymeyer
-#  2.69% barbushin
-#  2.32% Florian Plattner
+#  2.85% skymeyer
+#  2.69% barbushin
+#  2.32% Florian Plattner
 #  (...)
 
 ```
