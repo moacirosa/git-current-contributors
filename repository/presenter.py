@@ -50,7 +50,7 @@ def sorter(counter, argv):
     sorted_counter = counter.most_common(top_n)
 
     if argv.alphabetically:
-        sorted_counter = sorted(sorted_counter)
+        sorted_counter = sorted(sorted_counter, key=lambda s: s[0].lower())
 
     if argv.reverse:
         sorted_counter = reversed(sorted_counter)
