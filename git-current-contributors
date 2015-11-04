@@ -2,8 +2,10 @@
 
 import os
 import argparse
+import git_current_contributors.logger
 import git_current_contributors.selfupdate
 import blame_relative_count.analyser
+import blame_relative_count.presenter
 
 parser = argparse.ArgumentParser(description="A custom Git command")
 
@@ -90,8 +92,18 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+logger = git_current_contributors.logger.instance
+
 if args.self_update:
     install_path = os.path.expanduser('~/.git-current-contributors')
-    git_current_contributors.selfupdate.update(install_path)
+    git_current_contributors.selfupdate.update(install_path, logger)
 else:
-    blame_relative_count.analyser.commit(os.getcwd(), args)
+    analyser = blame_relative_count.analyser
+    presenter = blame_relative_count.presenter
+
+    accumulator, elapsed_time = analyser.commit(os.getcwd(), args, logger)
+
+    if args.csv:
+        presenter.csv(accumulator, args, logger)
+    else:
+        presenter.stdout(accumulator, elapsed_time, args, logger)

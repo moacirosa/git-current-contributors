@@ -1,14 +1,24 @@
-import logger
+import decorators
 import datetime
 
-def out(counter, argv, elapsed_time = None):
+def stdout(counter, elapsed_time, argv, logger=None):
 
-    prepared_lines = prepare(counter, argv, elapsed_time)
+    prepared_lines = prepare(counter, argv, elapsed_time, logger)
     output = '\n'.join(prepared_lines)
 
     print(output)
 
-def prepare(counter, argv, elapsed_time = None):
+def csv(counter, argv, logger=None):
+
+    sum_lines = sum(counter.values())
+    sorted_counter = sorter(counter, argv)
+
+    for author, contributions in sorted_counter:
+        relative = float(contributions) / float(sum_lines)
+        print('{}, {}, {}'.format(relative, contributions, author))
+
+@decorators.null_logger
+def prepare(counter, argv, elapsed_time = None, logger=None):
 
     blue = '\033[94m'
     grey = '\033[0m'
@@ -37,8 +47,8 @@ def prepare(counter, argv, elapsed_time = None):
     n_contributors = 'Showing {}/{} contributors'.format(top_n, len(counter))
     elapsed ='Elapsed time: {}'.format(datetime.timedelta(seconds=elapsed_time))
 
-    logger.instance.info(n_contributors)
-    logger.instance.info(elapsed)
+    logger.info(n_contributors)
+    logger.info(elapsed)
 
     prepared_lines.append('{}, {}'.format(n_contributors, elapsed))
 
@@ -65,12 +75,3 @@ def check_top_n(counter, argv):
         top_n = len(counter)
 
     return top_n
-
-def csv(counter, argv):
-
-    sum_lines = sum(counter.values())
-    sorted_counter = sorter(counter, argv)
-
-    for author, contributions in sorted_counter:
-        relative = float(contributions) / float(sum_lines)
-        print('{}, {}, {}'.format(relative, contributions, author))

@@ -1,8 +1,7 @@
 import os
 import re
 import subprocess
-import presenter
-import logger
+import decorators
 import time
 from collections import Counter
 
@@ -15,26 +14,28 @@ def get_files(repository_path, argv):
 
     return files.split()
 
-def blame(repository_path, file, argv):
+@decorators.null_logger
+def blame(repository_path, file, argv, logger=None):
 
     os.chdir(repository_path)
 
-    if is_binary(file) and not argv.force_binaries:
-        logger.instance.info('Skipping (binary) {} ...'.format(file))
+    if is_binary(file, logger) and not argv.force_binaries:
+        logger.info('Skipping (binary) {} ...'.format(file))
         return ''
 
-    logger.instance.debug('Running over {} ...'.format(file))
+    logger.debug('Running over {} ...'.format(file))
 
     try:
         parameters = ['git', 'blame', '--line-porcelain', '-w', file]
         blame = subprocess.check_output(parameters, universal_newlines=True)
     except subprocess.CalledProcessError as e:
-        logger.instance.error(e)
+        logger.error(e)
         return ''
 
     return blame
 
-def is_binary(file):
+@decorators.null_logger
+def is_binary(file, logger=None):
 
     parameters = ['file', '--mime', file]
 
@@ -42,34 +43,33 @@ def is_binary(file):
         mime = subprocess.check_output(parameters, universal_newlines=True)
         match = re.search('charset=binary', mime)
     except UnicodeDecodeError as e:
-        logger.instance.warning(file)
-        logger.instance.warning(e)
+        logger.warning(file)
+        logger.warning(e)
         match = True
 
     return match is not None
 
-def commit(repository_path, argv):
+@decorators.null_logger
+def commit(repository_path, argv, logger=None):
 
     start_time = time.time()
     accumulator = Counter()
 
     for file in get_files(repository_path, argv):
-        porcelain_blame = blame(repository_path,  file, argv)
-        counter = process_blame(porcelain_blame, argv)
+        porcelain_blame = blame(repository_path,  file, argv, logger)
+        counter = process_blame(porcelain_blame, argv, logger)
         accumulator = accumulator + counter
 
     elapsed_time = time.time() - start_time
 
-    logger.instance.debug('Elapsed time {}'.format(elapsed_time))
-    logger.instance.debug('Final accumulator...')
-    logger.instance.debug(accumulator)
+    logger.debug('Elapsed time {}'.format(elapsed_time))
+    logger.debug('Final accumulator...')
+    logger.debug(accumulator)
 
-    if argv.csv:
-        return presenter.csv(accumulator, argv)
+    return (accumulator, elapsed_time)
 
-    return presenter.out(accumulator, argv, elapsed_time)
-
-def process_blame(blame, argv):
+@decorators.null_logger
+def process_blame(blame, argv, logger=None):
 
     pattern = '^(?:{} )(.+)'.format(argv.identifier)
 
@@ -77,6 +77,6 @@ def process_blame(blame, argv):
     matches = regex.findall(blame)
     counter = Counter(matches)
 
-    logger.instance.debug(counter)
+    logger.debug(counter)
 
     return counter
